@@ -62,13 +62,13 @@
           </svg>
         </a>
       </li>
+      <li>
+        <a href="/">
+          <i class="icss-chat"></i>
+          Social
+        </a>
+      </li>
       {{ if .Authenticated }}
-        <li>
-          <a href="/">
-            <i class="icss-chat"></i>
-            Social
-          </a>
-        </li>
         <li>
           <a href="/messages">
             <i class="icss-mail-box"></i>
@@ -128,37 +128,10 @@
       {{ end }}
     </ul>
   </nav>
-  {{ if .Authenticated }}
-    <aside class="sidebar">
-      <nav>
-        <ul>
-          <li>
-            <a href="/">
-              <i class="icss-chat"></i>
-              Timeline
-            </a>
-          </li>
-          <li>
-            <a href="/discover">
-              <i class="icss-users"></i>
-              Discover
-            </a>
-          </li>
-          <li>
-            <a href="/mentions">
-              <i class="icss-smiley"></i>
-              Mentions
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-  {{ end }}
-  {{ if .Authenticated }}
+  {{ template "sidebar" . }}
   <div class="main-content">
-  {{end}}
     <main class="container entry-content">
-      {{template "content" . }}
+      {{ template "content" . }}
     </main>
     <footer class="footer-main">
       <div class="container">
@@ -179,9 +152,7 @@
         </small>
       </div>
     </footer>
-  {{ if .Authenticated }}
   </div>
-  {{end}}
   {{ if $.Debug }}
     <script type="application/javascript" src="/js/01-umbrella.js"></script>
     <script type="application/javascript" src="/js/02-polyfill.js"></script>

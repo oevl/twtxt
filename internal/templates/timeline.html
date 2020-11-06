@@ -1,3 +1,32 @@
+{{ define "sidebar" }}
+  <aside class="sidebar">
+    <nav>
+      <ul>
+        <li>
+          <a href="/">
+            <i class="icss-chat"></i>
+            Timeline
+          </a>
+        </li>
+        {{ if .Authenticated }}
+          <li>
+            <a href="/discover">
+              <i class="icss-users"></i>
+              Discover
+            </a>
+          </li>
+          <li>
+            <a href="/mentions">
+              <i class="icss-smiley"></i>
+              Mentions
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </aside>
+{{ end }}
+
 {{define "content"}}
   {{ template "post" (dict "Authenticated" $.Authenticated "User" $.User "TwtPrompt" $.TwtPrompt "MaxTwtLength" $.MaxTwtLength "Reply" $.Reply "AutoFocus" true) }}
   {{ template "feed" (dict "Authenticated" $.Authenticated "User" $.User "Profile" $.Profile "LastTwt" $.LastTwt "Pager" $.Pager "Twts" $.Twts) }}
