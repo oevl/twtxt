@@ -9,7 +9,10 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+
 	"sync"
+
+	deadlock "github.com/sasha-s/go-deadlock"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -75,7 +78,7 @@ func LoadFeedSources(path string) (*FeedSources, error) {
 
 func FetchFeedSources(conf *Config, sources []string) *FeedSources {
 	var (
-		mu sync.RWMutex
+		mu deadlock.RWMutex
 		wg sync.WaitGroup
 	)
 

@@ -8,7 +8,10 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"sync"
+
+	//"sync"
+
+	sync "github.com/sasha-s/go-deadlock"
 
 	rice "github.com/GeertJohan/go.rice"
 	"github.com/Masterminds/sprig"

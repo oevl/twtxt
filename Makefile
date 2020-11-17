@@ -23,7 +23,7 @@ cli:
 		./cmd/twt/...
 
 server: generate
-	@go build -tags "netgo static_build" -installsuffix netgo \
+	@go build -race -tags "netgo static_build" -installsuffix netgo \
 		-ldflags "-w \
 		-X $(shell go list).Version=$(VERSION) \
 		-X $(shell go list).Commit=$(COMMIT)" \

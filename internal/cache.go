@@ -10,9 +10,11 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
 	"sync"
 	"time"
 
+	"github.com/sasha-s/go-deadlock"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/prologic/twtxt"
@@ -25,7 +27,7 @@ const (
 
 // Cached ...
 type Cached struct {
-	mu           sync.RWMutex
+	mu           deadlock.RWMutex
 	cache        types.TwtMap
 	Twts         types.Twts
 	Lastmodified string
@@ -60,7 +62,7 @@ type OldCache map[string]Cached
 
 // Cache ...
 type Cache struct {
-	mu   sync.RWMutex
+	mu   deadlock.RWMutex
 	Twts map[string]Cached
 }
 

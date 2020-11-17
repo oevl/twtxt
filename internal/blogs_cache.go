@@ -6,7 +6,10 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"sync"
+
+	//"sync"
+
+	sync "github.com/sasha-s/go-deadlock"
 
 	log "github.com/sirupsen/logrus"
 )
